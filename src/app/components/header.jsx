@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RxCross2 } from "react-icons/rx";
 import { FaChevronDown } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
@@ -7,9 +7,24 @@ import { IoMenu } from "react-icons/io5";
 function Header() {
      const [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+   useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-<nav className='w-full absolute top-0 left-0 z-50 bg-transparent'>
+<nav className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md" : "bg-transparent"}`}>
 <div className='max-w-7xl mx-auto px-4 py-6 flex items-center justify-between h-22 '>
    <div className='flex items-center gap-2 p-6'>
      <img src='/r1.jpeg' alt='logo' className='h-13 w-auto'
@@ -62,7 +77,7 @@ function Header() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden px-4 pb-4">
+        <div className="md:hidden px-4 pb-4 bg-white shadow-lg rounded-b-xl">
           <ul className="flex flex-col gap-4 text-gray-700 font-medium">
             <li className='text-blue-600'>Home</li>
 
