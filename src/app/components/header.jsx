@@ -32,7 +32,7 @@ function Header() {
    </div>
 
     {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-8 text-black">
+        <ul className="hidden md:flex items-center gap-8 text-white">
           <li className="text-blue-600 cursor-pointer">Home</li>
 
           {/* Dropdown */}
@@ -41,7 +41,7 @@ function Header() {
             onMouseEnter={() => setDropdown(true)}
             onMouseLeave={() => setDropdown(false)}
           >
-            <div className="flex items-center gap-1 text-black hover:text-blue-400">
+            <div className="flex items-center gap-1 text-white hover:text-blue-400">
               Courses <FaChevronDown size={16} />
             </div>
 

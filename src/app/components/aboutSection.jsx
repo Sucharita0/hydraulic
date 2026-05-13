@@ -13,7 +13,7 @@ function AboutSection() {
 
         
         <div className='text-center'>
-          <h2 className="text-2xl md:text-[45px] font-bold text-blue-950 mb-10 text-center">
+          <h2 className="text-2xl md:text-[25px] font-bold text-blue-950 mb-10 text-center">
             Build Your Career in Hydraulic Technology
           </h2>
 

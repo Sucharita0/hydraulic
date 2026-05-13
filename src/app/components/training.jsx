@@ -1,13 +1,9 @@
 'use client';
-import React, { useRef } from 'react'
-
-
-import { CiSquareChevLeft } from "react-icons/ci";
-import { CiSquareChevRight } from "react-icons/ci";
 import Image from 'next/image';
+import { FaCheckCircle } from "react-icons/fa";
+import React, { useEffect, useState } from 'react'
 
-
-const services = [
+const  slides = [
   {
     title: " CURRICULUM",
     desc: [
@@ -49,100 +45,96 @@ const services = [
 
 
 
-function Training() {
-   const scrollRef = useRef(null);
 
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -300 : 300,
-        behavior: 'smooth',
-      });
-    }
-  };
+
+
+
+
+function Training() {
+   const [current, setCurrent] = useState(0);
+
+  // Auto Slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 3000); // 3 sec
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-   
     <>
-    <div className="relative w-full py-16 px-6 text-white">
+     <div className="w-full bg-gray-300 py-10 overflow-hidden">
+
+      <div className="text-center mb-10 max-w-2xl mx-auto">
+        <h2 className="text-black text-3xl md:text-4xl font-bold mb-4">
+          Training Section
+        </h2>
+        </div>
       
-      {/* Background */}
-      <div className="absolute inset-0 -z-10 bg-blue-950">
-       
-        <div className="absolute inset-0 bg-black/60"></div>
-      </div>
-
-      {/* Header */}
-      <div className="text-center mb-10">
-        
-
-        <h1 className="text-2xl md:text-4xl font-bold max-w-4xl mx-auto">
-          Industry-focused training with Learn & Earn model
-        </h1>
-      </div>
-
-      {/* Slider */}
-      <div className="relative max-w-6xl mx-auto">
-
-        {/* Left */}
-        <button
-          onClick={() => scroll('left')}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-4xl"
-        >
-          < CiSquareChevLeft/>
-        </button>
-
-        {/* Cards */}
-        <div
-          ref={scrollRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 scroll-smooth"
-        >
-          {services.map((item, index) => (
-            <div
-              key={index}
-              className="bg-blue-950 text-white rounded-xl shadow-lg p-5 flex flex-col gap-4 w-full"
-            >
-              {/* Small Image */}
-              <div className="w-full h-32 relative rounded-lg overflow-hidden">
+      <div
+        className="flex transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {slides.map((item, index) => (
+          <div
+            key={index}
+            className="min-w-full px-4 md:px-12"
+          >
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-6 items-center bg-white rounded-2xl shadow-lg p-8">
+              
+              {/* IMAGE */}
+              <div className="w-full md:w-1/2 p-4">
                 <Image
                   src={item.img}
                   alt={item.title}
-                  fill
-                  className="object-cover"
+                  width={600}
+                  height={400}
+                  className="rounded-xl w-full h-auto object-cover"
                 />
               </div>
 
-              {/* Content */}
-              <h2 className="text-lg font-bold text-center">{item.title}</h2>
-              <ul className="text-sm text-white text-center space-y-1 font-semibold">
-                {item.desc.map((point, i) => (
-                  <li key={i}>{point}</li>
-                ))}
-              </ul>
+              {/* CONTENT */}
+              <div className="w-full md:w-1/2">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">
+                  {item.title}
+                </h2>
 
-              
-            </div>
-          ))}
-        </div>
-
-        {/* Right */}
-        <button
-          onClick={() => scroll('right')}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-4xl"
-        >
-          <CiSquareChevRight />
-        </button>
-
+                 <ul className="mb-5 space-y-2">
+                  {item.desc.map((point, i) => (
+                    <li key={i} className="flex items-start gap-2 text-gray-600">
+                      <FaCheckCircle className="text-green-500 mt-1 text-md" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+                
+                 </div>
+          </div>
+          </div>
+        ))}
       </div>
-    </div>
+      </div>
+      
     </>
-        
-
-
-
-    
-    
   )
 }
 
 export default Training
+
+
+
+
+
+  
+   
+  
+        
+
+
+
+    
+    
+  
+
+
