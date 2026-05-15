@@ -24,7 +24,7 @@ function Header() {
 
   return (
     <>
-<nav className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md" : "bg-transparent"}`}>
+<nav className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${scrolled ? "bg-white text-black shadow-md" : "bg-transparent"}`}>
 <div className='max-w-7xl mx-auto px-4 py-6 flex items-center justify-between h-22 '>
    <div className='flex items-center gap-2 p-6'>
      <img src='/r1.jpeg' alt='logo' className='h-13 w-auto'

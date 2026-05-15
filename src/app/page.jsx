@@ -7,7 +7,9 @@ import Footer from './components/footer'
 import Card from './components/card'
 import Faq from './components/faq'
 import Map from './components/map'
+import Training2 from './components/training2'
 import Training from './components/training'
+
 
 function Page() {
   return (
@@ -15,6 +17,7 @@ function Page() {
     <Header/>
     <ImageSlide/>
     <AboutSection/>
+    <Training2/>
     <Training/>
      <Card/>
      <Faq/>

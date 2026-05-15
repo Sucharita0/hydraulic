@@ -59,7 +59,7 @@ function Card() {
         {features.map((item, index) => (
           <div
             key={index}
-            className="bg-sky-500 rounded-2xl p-8 text-center shadow-lg hover:scale-105 transition duration-300 hover:bg-gray-300"
+            className="bg-sky-500 rounded-2xl p-8 text-center shadow-lg hover:scale-105 transition duration-300 hover:bg-blue-900"
           >
             
             {/* ICON */}
