@@ -9,6 +9,7 @@ import Faq from './components/faq'
 import Map from './components/map'
 import Training2 from './components/training2'
 import Training from './components/training'
+import Learning from './components/learning'
 
 
 function Page() {
@@ -19,6 +20,7 @@ function Page() {
     <AboutSection/>
     <Training2/>
     <Training/>
+    <Learning/>
      <Card/>
      <Faq/>
      <Map/>

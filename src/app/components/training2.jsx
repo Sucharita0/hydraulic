@@ -6,7 +6,7 @@ function Training2() {
     <>
      <div className="bg-gradient-to-r from-[#0a0f2c] to-[#0c1b3a] rounded-2xl">
       
-      <div className="grid grid-cols-1 md:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 ">
         
         {/* LEFT BIG CARD */}
         <div className="relative lg:col-span-2 rounded-2xl overflow-hidden">
